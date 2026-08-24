@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="QueueLess — A modern queue management system. Skip the wait, join queues digitally, and track your position in real-time.">
+    <title>QueueLess — Smart Queue Management System</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="navbar-brand">
+                <div class="logo-icon">Q</div>
+                QueueLess
+            </a>
+            <div class="navbar-nav" id="navLinks">
+                <a href="/login" class="btn btn-sm btn-secondary">Login</a>
+                <a href="/register" class="btn btn-sm btn-primary">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="animate-fade-in">
+                Say Goodbye to <span class="text-gradient">Long Queues</span>
+            </h1>
+            <p class="hero-subtitle animate-fade-in animate-delay-1">
+                QueueLess transforms the way you wait. Join queues digitally, 
+                receive a unique token, and track your position in real-time — 
+                all from your device.
+            </p>
+            <div class="hero-cta animate-fade-in animate-delay-2">
+                <a href="/register" class="btn btn-lg btn-primary">
+                    🚀 Get Started Free
+                </a>
+                <a href="#how-it-works" class="btn btn-lg btn-outline">
+                    Learn More →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="container">
+            <h2 class="text-center">Why Choose <span class="text-gradient">QueueLess</span>?</h2>
+            <div class="features-grid">
+                <div class="feature-card animate-fade-in animate-delay-1">
+                    <div class="feature-icon">🎫</div>
+                    <h3>Digital Tokens</h3>
+                    <p>Generate a unique queue token instantly. No more standing in physical lines or taking paper tickets.</p>
+                </div>
+                <div class="feature-card animate-fade-in animate-delay-2">
+                    <div class="feature-icon">📊</div>
+                    <h3>Real-Time Tracking</h3>
+                    <p>Monitor your position in the queue live. Know exactly how many people are ahead and when it's your turn.</p>
+                </div>
+                <div class="feature-card animate-fade-in animate-delay-3">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Smart Management</h3>
+                    <p>Staff can call, serve, or skip tokens with a single click. Efficient queue management made simple.</p>
+                </div>
+                <div class="feature-card animate-fade-in animate-delay-1">
+                    <div class="feature-icon">🏥</div>
+                    <h3>Multi-Service</h3>
+                    <p>Supports multiple service counters — hospitals, banks, clinics, government offices, and more.</p>
+                </div>
+                <div class="feature-card animate-fade-in animate-delay-2">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Secure Access</h3>
+                    <p>Role-based authentication ensures that only authorized staff can manage queues and services.</p>
+                </div>
+                <div class="feature-card animate-fade-in animate-delay-3">
+                    <div class="feature-icon">📱</div>
+                    <h3>Responsive Design</h3>
+                    <p>Works beautifully on desktop, tablet, and mobile. Access your queue status from any device.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <h2 class="text-center">How It <span class="text-gradient">Works</span></h2>
+            <div class="steps">
+                <div class="step animate-fade-in animate-delay-1">
+                    <div class="step-number">1</div>
+                    <h3>Choose a Service</h3>
+                    <p>Select from available services like consultation, billing, support, and more.</p>
+                </div>
+                <div class="step animate-fade-in animate-delay-2">
+                    <div class="step-number">2</div>
+                    <h3>Get Your Token</h3>
+                    <p>Receive a unique token number instantly. Your place in the queue is secured.</p>
+                </div>
+                <div class="step animate-fade-in animate-delay-3">
+                    <div class="step-number">3</div>
+                    <h3>Track & Wait</h3>
+                    <p>Monitor your position in real-time. Get notified when it's your turn to be served.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2024 QueueLess — Queue Management System | Built by Kuhu, Khushi Kindra & Saksham Bajaj</p>
+        </div>
+    </footer>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/utils.js"></script>
+    <script>
+        // If user is already logged in, show dashboard link instead
+        (async () => {
+            const user = await getCurrentUser();
+            if (user) {
+                const navLinks = document.getElementById('navLinks');
+                navLinks.innerHTML = `
+                    <a href="/${user.role === 'user' ? 'user' : user.role}/dashboard" class="btn btn-sm btn-primary">
+                        Go to Dashboard
+                    </a>
+                `;
+            }
+        })();
+    </script>
+</body>
+</html>

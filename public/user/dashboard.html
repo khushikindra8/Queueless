@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="QueueLess User Dashboard — Select a service, generate your token, and track your position in real-time.">
+    <title>Dashboard — QueueLess</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="page-wrapper">
+        <!-- Navbar injected by JS -->
+        <div id="navbar"></div>
+
+        <main class="main-content">
+            <div class="container">
+                <div class="dashboard-header">
+                    <h1>Welcome, <span class="text-gradient" id="userName">User</span></h1>
+                    <p class="text-secondary">Select a service and join the queue digitally</p>
+                </div>
+
+                <!-- Active Token Section (shown when user has a token) -->
+                <div id="activeTokenSection" class="hidden">
+                    <div class="section-header">
+                        <div>
+                            <h2 class="section-title">Your Token</h2>
+                            <p class="section-subtitle">Live queue status — refreshes automatically</p>
+                        </div>
+                    </div>
+                    <div class="token-display" id="tokenDisplay">
+                        <!-- Token info rendered by JS -->
+                    </div>
+                </div>
+
+                <!-- Service Selection (shown when user has no token) -->
+                <div id="serviceSection">
+                    <div class="section-header">
+                        <div>
+                            <h2 class="section-title">Available Services</h2>
+                            <p class="section-subtitle">Choose a service to join the queue</p>
+                        </div>
+                    </div>
+                    <div class="services-grid" id="servicesGrid">
+                        <div class="loading-overlay"><div class="spinner"></div></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <p>© 2024 QueueLess — Queue Management System</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/utils.js"></script>
+    <script src="/js/user-dashboard.js"></script>
+</body>
+</html>

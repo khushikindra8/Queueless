@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="QueueLess Staff Dashboard — Manage queues, call next customers, mark served, and skip tokens.">
+    <title>Staff Dashboard — QueueLess</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="page-wrapper">
+        <div id="navbar"></div>
+
+        <main class="main-content">
+            <div class="container">
+                <div class="dashboard-header">
+                    <h1>Queue <span class="text-gradient">Manager</span></h1>
+                    <p class="text-secondary">Call, serve, and manage queue tokens</p>
+                </div>
+
+                <!-- Service Selector -->
+                <div class="card mb-xl">
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label class="form-label" for="serviceSelect">Select Service Queue</label>
+                        <select id="serviceSelect" class="form-select">
+                            <option value="">— Choose a service —</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Queue Management Panel (hidden until service selected) -->
+                <div id="queuePanel" class="hidden">
+                    <!-- Current Token Being Served -->
+                    <div class="current-token-card" id="currentTokenCard">
+                        <div class="current-label">Now Serving</div>
+                        <div class="current-number" id="currentTokenNumber">—</div>
+                        <div class="current-user" id="currentTokenUser"></div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="btn-group mb-xl" style="justify-content: center;" id="actionButtons">
+                        <button class="btn btn-primary btn-lg" id="callNextBtn" onclick="callNext()">
+                            📢 Call Next
+                        </button>
+                        <button class="btn btn-success btn-lg hidden" id="serveBtn" onclick="serveCurrent()">
+                            ✓ Mark Served
+                        </button>
+                        <button class="btn btn-danger btn-lg hidden" id="skipBtn" onclick="skipCurrent()">
+                            ⏭ Skip
+                        </button>
+                    </div>
+
+                    <!-- Stats Row -->
+                    <div class="stats-grid" id="queueStats">
+                        <!-- Rendered by JS -->
+                    </div>
+
+                    <!-- Waiting List Table -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Waiting Queue</h3>
+                            <p class="card-description">Tokens waiting to be served</p>
+                        </div>
+                        <div class="table-wrapper" id="waitingTableWrapper">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Token</th>
+                                        <th>Customer</th>
+                                        <th>Joined</th>
+                                        <th>Wait Time</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="waitingTableBody">
+                                    <tr>
+                                        <td colspan="5" class="text-center text-muted" style="padding: 2rem;">
+                                            Select a service to view the queue
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <p>© 2024 QueueLess — Queue Management System</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/utils.js"></script>
+    <script src="/js/staff-dashboard.js"></script>
+</body>
+</html>

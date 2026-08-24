@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="QueueLess Admin Dashboard — Monitor queues, manage services, and control user roles.">
+    <title>Admin Dashboard — QueueLess</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="page-wrapper">
+        <div id="navbar"></div>
+
+        <main class="main-content">
+            <div class="container">
+                <div class="dashboard-header">
+                    <h1>Admin <span class="text-gradient">Dashboard</span></h1>
+                    <p class="text-secondary">Monitor queues, manage services, and control access</p>
+                </div>
+
+                <!-- Stats Overview -->
+                <div class="stats-grid" id="statsGrid">
+                    <div class="loading-overlay"><div class="spinner"></div></div>
+                </div>
+
+                <!-- Tabs-like Section Navigation -->
+                <div class="btn-group mb-xl">
+                    <button class="btn btn-primary" id="tabServices" onclick="showTab('services')">🏷️ Services</button>
+                    <button class="btn btn-secondary" id="tabUsers" onclick="showTab('users')">👥 Users</button>
+                    <button class="btn btn-secondary" id="tabQueues" onclick="showTab('queues')">📊 Queue Overview</button>
+                </div>
+
+                <!-- Services Management -->
+                <div id="servicesTab">
+                    <div class="section-header">
+                        <div>
+                            <h2 class="section-title">Service Management</h2>
+                            <p class="section-subtitle">Add, edit, and manage available services</p>
+                        </div>
+                        <button class="btn btn-primary" onclick="showAddServiceModal()">+ Add Service</button>
+                    </div>
+                    <div class="card">
+                        <div class="table-wrapper">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Prefix</th>
+                                        <th>Service Name</th>
+                                        <th>Description</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="servicesTableBody">
+                                    <tr><td colspan="5" class="text-center text-muted" style="padding:2rem;">Loading...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- User Management -->
+                <div id="usersTab" class="hidden">
+                    <div class="section-header">
+                        <div>
+                            <h2 class="section-title">User Management</h2>
+                            <p class="section-subtitle">View registered users and manage roles</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="table-wrapper">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Role</th>
+                                        <th>Joined</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="usersTableBody">
+                                    <tr><td colspan="6" class="text-center text-muted" style="padding:2rem;">Loading...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Queue Overview -->
+                <div id="queuesTab" class="hidden">
+                    <div class="section-header">
+                        <div>
+                            <h2 class="section-title">Queue Overview</h2>
+                            <p class="section-subtitle">Per-service queue breakdown for today</p>
+                        </div>
+                    </div>
+                    <div id="queueBreakdown">
+                        <div class="loading-overlay"><div class="spinner"></div></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <p>© 2024 QueueLess — Queue Management System</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Add/Edit Service Modal -->
+    <div class="modal-overlay" id="serviceModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="serviceModalTitle">Add New Service</h3>
+                <button class="modal-close" onclick="closeServiceModal()">&times;</button>
+            </div>
+            <form id="serviceForm">
+                <input type="hidden" id="serviceEditId">
+                <div class="form-group">
+                    <label class="form-label" for="serviceName">Service Name</label>
+                    <input type="text" id="serviceName" class="form-input" placeholder="e.g. General Consultation" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="servicePrefix">Prefix (max 5 chars)</label>
+                    <input type="text" id="servicePrefix" class="form-input" placeholder="e.g. GC" maxlength="5" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="serviceDescription">Description</label>
+                    <input type="text" id="serviceDescription" class="form-input" placeholder="Brief description of the service">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeServiceModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="serviceSubmitBtn">Add Service</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/utils.js"></script>
+    <script src="/js/admin-dashboard.js"></script>
+</body>
+</html>
