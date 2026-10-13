@@ -31,7 +31,6 @@
 - [API Reference](#-api-reference)
 - [Project Directory Structure](#-project-directory-structure)
 - [Contributing](#-contributing)
-- [Authors & Acknowledgments](#-authors--acknowledgments)
 - [License](#-license)
 
 ---
@@ -331,15 +330,6 @@ Contributions make the open-source community a fantastic place to learn, inspire
 3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
-
----
-
-## 👥 Authors & Acknowledgments
-
-Developed with ❤️ by:
-- **Kuhu**
-- **Khushi Kindra** ([@khushikindra8](https://github.com/khushikindra8))
-- **Saksham Bajaj**
 
 ---
 
